@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="description" content="">
+  <meta name="keywords"    content="">
+  <meta name="viewport"    content="width=device-width, initial-scale=1">
+  <title>Multiplex Graphs Benchmark</title>
+  
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-PYVRSFMDRL"></script>
+  <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+
+    function gtag() {
+      dataLayer.push(arguments); 
+    }
+
+    gtag('js', new Date());
+
+    gtag('config', 'G-PYVRSFMDRL');
+  </script>
+
+  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro"
+        rel="stylesheet">
+
+  <link rel="stylesheet" href="./static/css/bulma.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-carousel.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-slider.min.css">
+  <link rel="stylesheet" href="./static/css/fontawesome.all.min.css">
+  <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  <link rel="stylesheet" href="./static/css/index.css">
+  <!-- <link rel="icon" href="./static/images/favicon.svg"> -->
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script defer src="./static/js/fontawesome.all.min.js"></script>
+  <script src="./static/js/bulma-carousel.min.js"></script>
+  <script src="./static/js/bulma-slider.min.js"></script>
+  <script src="./static/js/index.js"></script>
+</head>
+<body>
+
+
+
+<section class="hero">
+  <div class="hero-body">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered">
+        <div class="column has-text-centered">
+          <h1 class="title is-2 publication-title">Benchmarking and Rethinking Multiplex Graphs</h1>
+
+          <div class="is-size-5 publication-authors">
+            <span class="author-block">
+              <a href="">Anonymous Author</a><sup>1</sup></span>
+            <!-- <span class="author-block">
+              <a href="https://utkarshsinha.com">Junchen Li</Li></a><sup>2</sup>,</span>
+            <span class="author-block">
+              <a href="https://jonbarron.info">Zhuonan Wang</a><sup>3</sup>,
+            </span>
+            <span class="author-block">
+              <a href="http://sofienbouaziz.com">Wenqiao Zhang</a><sup>4</sup>,
+            </span>
+            <span class="author-block"></span>
+              <a href="https://www.danbgoldman.com">Siliang Tang</a><sup>5</sup>,
+            </span> -->
+            </span>
+          </div>
+
+          <div class="is-size-5 publication-authors">
+            <span class="author-block">Affiliation<sup>1</sup></span> 
+            <!-- <span class="author-block"><sup>2</sup>Google Research</span> -->
+          </div>
+
+          <div class="column has-text-centered">
+            <div class="publication-links">
+
+              <span class="link-block">
+                <a href=""
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fas fa-file-pdf"></i>
+                  </span>
+                  <span>Paper</span>
+                </a>
+              </span>
+
+              <!-- <span class="link-block">
+                <a href="https://arxiv.org/abs/2011.12948"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="ai ai-arxiv"></i>
+                  </span>
+                  <span>arXiv</span>
+                </a>
+              </span> -->
+              
+              <!-- <span class="link-block">
+                <a href="https://www.youtube.com/watch?v=MrKrnHhk8IA"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fab fa-youtube"></i>
+                  </span>
+                  <span>Video</span>
+                </a>
+              </span> -->
+
+              <!-- Code Link. -->
+              <span class="link-block">
+                <a href=""
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fab fa-github"></i>
+                  </span>
+                  <span>Code</span>
+                  </a>
+              </span>
+
+              <!-- Dataset Link. -->
+              <span class="link-block">
+                <a href=""
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="far fa-images"></i>
+                  </span>
+                  <span>Dataset</span>
+                  </a>
+              </span>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<section class="section">
+  <div class="container is-max-desktop">
+    <!-- Abstract. -->
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-six-fifths">
+        <h2 class="title is-3">Abstract</h2>
+        <div class="content has-text-justified">
+          <p>
+            Multiplex graphs, which represent complex real-world relationships, have recentlygarnered significant research interest. 
+            However, contemporary methods exhibitvariations in implementations and settings, lacking a unified benchmark for faircomparison. 
+            Additionally, existing multiplex graph datasets suffer from small-scaleissues and a lack of representative features. 
+            Furthermore, current evaluation metricsare restricted to node classification and clustering tasks, lacking evaluations onedge-level tasks. 
+            These obstacles impede the further development of the multiplexgraph learning community. 
+          </p>
+          <p>
+            To address these issues, we first conducted a faircomparison based on existing settings, finding that current methods are approachingperformance saturation on existing datasets with minimal differences; 
+            and simpleend-to-end models sometimes achieve better results. Subsequently, we proposeda unified multiplex graph benchmark called MGB. 
+            MGB includes ten baselinemodels with unified implementations, formalizes seven existing datasets, introducesfour new datasets with text attributes, and proposes two novel edge-level evaluationtasks. 
+            Experiments on MGB revealed that the performance of existing methodssignificantly diminishes on new challenging datasets and tasks. 
+            Additional resultssuggest that models with global attention and stronger expressive power in endto-end solutions hold promise for future work.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<section class="section">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-six-fifths">
+        <h2 class="title is-3">How to Run</h2>
+        <div class="content has-text-justified">
+
+        </div>
+
+
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+<section class="section">
+  <div class="container is-max-desktop">
+    <!-- Abstract. -->
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-six-fifths">
+        <h2 class="title is-3">Multiplex Graph Benchmark</h2>
+        <div class="content has-text-justified">
+          <p>
+            Comparison of the scales of existing multiplex graph datasets, highlighting a significant limitation: 
+            the small size of these datasets, which typically contain only 3,000 to 5,000 nodes, as seen in datasets like ACM, IMDB, and DBLP. 
+            This limited scale constrains the models' ability to generalize and effectively capture the complexity of real-world relationships, 
+            thereby hindering the advancement of research in multiplex graph learning.
+          </p>
+          <centering>
+            <div style="text-align: center;">
+              <img id="teaser" width="60%" src="MGB\node_compar.png">
+            </div>
+          </centering>
+
+          <br><br>
+          
+          <p>
+            <b>Multiplex Graph Benchmark (MGB)</b> 
+            The MGB datasets are significantly larger than existing datasets, with Amazon-MGB being one of the largest at 35,000 nodes. 
+            They also include rich textual information extracted using advanced models like Sentence-BERT, offering more expressive features than traditional methods like bag-of-words (BoW). 
+            Additionally, the datasets have been enhanced with more meta-paths, increasing their complexity and making them more suitable for large-scale graph data and models.
+          </p>
+          <centering>
+            <div style="text-align: center;">
+              <img id="teaser" width="80%" src="MGB\data_cruation.png">
+            </div>
+          </centering>
+          
+
+
+        </div>
+      </div>
+    </div>
+</section>
+
+
+<section class="section">
+  <div class="container is-max-desktop">
+    <!-- Abstract. -->
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-six-fifths">
+        <h2 class="title is-3">Example</h2>
+        <div class="content has-text-justified">
+
+          <p style="text-align: center;">
+            Examples of textual attributes of the proposed datasets in MGB
+          </p>
+          <centering>
+            <div style="text-align: center;">
+              <img id="teaser" width="80%" src="MGB\example.png">
+            </div>
+          </centering>
+        
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+
+<section class="section">
+  <div class="container is-max-desktop">
+    <!-- Abstract. -->
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-six-fifths">
+        <h2 class="title is-3">Evaluation</h2>
+        <div class="content has-text-justified">
+
+          <p>
+            Current small and simple datasets lead to performance saturation, with minimal differences between methods, and that end-to-end methods often outperform more complex self-supervised approaches. 
+            The section underscores the need for standardized benchmarks to enable more accurate and meaningful comparisons of different models.
+          </p>
+          <centering>
+            <div style="text-align: center;">
+              <img id="teaser" width="80%" src="MGB\exist_comparison.png">
+            </div>
+          </centering>
+
+          <br><br>
+
+          <p>
+            The performance of various methods significantly declines on these more challenging datasets compared to previous ones, revealing substantial gaps between different approaches.
+          </p>
+
+          <br><br>
+
+          <p>
+            Node classification results on proposed MGB datasets with textual attributes
+          </p>
+          <centering>
+            <div style="text-align: center;">
+              <img id="teaser" width="80%" src="MGB\fair_comparison_node_cls.png">
+            </div>
+          </centering>
+
+          <p>
+            Node classification results on proposed MGB datasets with textual attributes
+          </p>
+          <centering>
+            <div style="text-align: center;">
+              <img id="teaser" width="60%" src="MGB\fair_comparison_node_clu.png">
+            </div>
+          </centering>
+
+          <p>
+            Node classification results on proposed MGB datasets with textual attributes
+          </p>
+          <centering>
+            <div style="text-align: center;">
+              <img id="teaser" width="80%" src="MGB\fair_comparison_node_edge.png">
+            </div>
+          </centering>
+
+
+        </div>
+      </div>
+    </div>
+</section>
+
+
+
+
+<!-- <section class="section" id="BibTeX">
+  <div class="container is-max-desktop content">
+    <h2 class="title">BibTeX</h2>
+    <pre><code>@article{park2021nerfies,
+  author    = {Park, Keunhong and Sinha, Utkarsh and Barron, Jonathan T. and Bouaziz, Sofien and Goldman, Dan B and Seitz, Steven M. and Martin-Brualla, Ricardo},
+  title     = {Nerfies: Deformable Neural Radiance Fields},
+  journal   = {ICCV},
+  year      = {2021},
+}</code></pre>
+  </div>
+</section> -->
+
+
+<footer class="footer">
+  <div class="container">
+    <div class="content has-text-centered">
+      <a class="icon-link"
+         href="./static/videos/nerfies_paper.pdf">
+        <i class="fas fa-file-pdf"></i>
+      </a>
+      <a class="icon-link" href="https://github.com/keunhong" class="external-link" disabled>
+        <i class="fab fa-github"></i>
+      </a>
+    </div>
+    <div class="columns is-centered">
+      <div class="column is-8">
+        <div class="content">
+          <p>
+            This website is licensed under a <a rel="license"
+                                                href="http://creativecommons.org/licenses/by-sa/4.0/">Creative
+            Commons Attribution-ShareAlike 4.0 International License</a>.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
