@@ -39,33 +39,38 @@
   <script src="./static/js/bulma-slider.min.js"></script>
   <script src="./static/js/index.js"></script>
 
+
   <script>
-  function copyCommand(button) {
-      // 执行复制命令的逻辑（如使用 navigator.clipboard.writeText 等）
-
-      // 将按钮的 SVG 图标更改为绿色对勾，同时添加 success 类
-      button.classList.add('success');
-      button.innerHTML = `
-          <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-check" width="24" height="24" viewBox="0 0 24 24" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round">
-              <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-              <path d="M5 12l5 5l10 -10"></path>
-          </svg>
-      `;
-
-      // 设置一个定时器在几秒后恢复原状
-      setTimeout(() => {
-          button.classList.remove('success');
-          button.innerHTML = `
-              <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-copy" width="24" height="24" viewBox="0 0 24 24" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                  <rect x="8" y="8" width="12" height="12" rx="2"></rect>
-                  <path d="M16 8v-2a2 2 0 0 0 -2 -2h-8a2 2 0 0 0 -2 2v8a2 2 0 0 0 2 2h2"></path>
-              </svg>
-          `;
-      }, 2000); // 2秒后恢复原来的图标
-  }
-
-
-  </script>
+    function copyCommand(button) {
+        // 获取要复制的文本
+        const commandText = button.parentElement.querySelector('.git-command').innerText;
+  
+        // 执行复制命令
+        navigator.clipboard.writeText(commandText).then(() => {
+            // 将按钮的 SVG 图标更改为绿色对勾，同时添加 success 类
+            button.classList.add('success');
+            button.innerHTML = `
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-check" width="24" height="24" viewBox="0 0 24 24" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                    <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                    <path d="M5 12l5 5l10 -10"></path>
+                </svg>
+            `;
+  
+            // 设置一个定时器在几秒后恢复原状
+            setTimeout(() => {
+                button.classList.remove('success');
+                button.innerHTML = `
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-copy" width="24" height="24" viewBox="0 0 24 24" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                        <rect x="8" y="8" width="12" height="12" rx="2"></rect>
+                        <path d="M16 8v-2a2 2 0 0 0 -2 -2h-8a2 2 0 0 0 -2 2v8a2 2 0 0 0 2 2h2"></path>
+                    </svg>
+                `;
+            }, 2000); // 2秒后恢复原来的图标
+        }).catch(err => {
+            console.error('Failed to copy text: ', err);
+        });
+    }
+    </script>
 
   <style>
   .git-command-container {
