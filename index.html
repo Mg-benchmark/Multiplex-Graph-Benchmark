@@ -8,7 +8,6 @@
   <title>Multiplex Graphs Benchmark</title>
   
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-PYVRSFMDRL"></script>
-  <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
 
@@ -20,10 +19,8 @@
 
     gtag('config', 'G-PYVRSFMDRL');
   </script>
-
   <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro"
         rel="stylesheet">
-
   <link rel="stylesheet" href="./static/css/bulma.min.css">
   <link rel="stylesheet" href="./static/css/bulma-carousel.min.css">
   <link rel="stylesheet" href="./static/css/bulma-slider.min.css">
@@ -31,13 +28,87 @@
   <link rel="stylesheet"
         href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
   <link rel="stylesheet" href="./static/css/index.css">
-  <!-- <link rel="icon" href="./static/images/favicon.svg"> -->
+  <link rel="stylesheet" href="./static/css/copybutton.css">
+ 
 
+
+  <!-- <link rel="icon" href="./static/images/favicon.svg"> -->
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <script defer src="./static/js/fontawesome.all.min.js"></script>
   <script src="./static/js/bulma-carousel.min.js"></script>
   <script src="./static/js/bulma-slider.min.js"></script>
   <script src="./static/js/index.js"></script>
+
+  <script>
+  function copyCommand(button) {
+      // 执行复制命令的逻辑（如使用 navigator.clipboard.writeText 等）
+
+      // 将按钮的 SVG 图标更改为绿色对勾，同时添加 success 类
+      button.classList.add('success');
+      button.innerHTML = `
+          <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-check" width="24" height="24" viewBox="0 0 24 24" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round">
+              <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+              <path d="M5 12l5 5l10 -10"></path>
+          </svg>
+      `;
+
+      // 设置一个定时器在几秒后恢复原状
+      setTimeout(() => {
+          button.classList.remove('success');
+          button.innerHTML = `
+              <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-copy" width="24" height="24" viewBox="0 0 24 24" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                  <rect x="8" y="8" width="12" height="12" rx="2"></rect>
+                  <path d="M16 8v-2a2 2 0 0 0 -2 -2h-8a2 2 0 0 0 -2 2v8a2 2 0 0 0 2 2h2"></path>
+              </svg>
+          `;
+      }, 2000); // 2秒后恢复原来的图标
+  }
+
+
+  </script>
+
+  <style>
+  .git-command-container {
+      background-color: #f5f5f5; /* 浅灰色背景 */
+      border: 1px solid #dbdbdb; /* 细边框 */
+      padding: 15px; /* 增加内边距 */
+      font-family: monospace; /* 等宽字体 */
+      color: #363636;
+      border-radius: 4px; /* 圆角边框 */
+      margin-top: 10px; /* 上边距 */
+      display: flex;
+      align-items: center; /* 垂直居中内容 */
+      min-height: 50px; /* 设置最小高度，确保足够空间 */
+  }
+
+
+  .git-prompt {
+      color: #4a4a4a; /* 深灰色的提示符 */
+  }
+
+  .git-command {
+      margin-left: 5px;
+      white-space: nowrap; /* 避免命令换行 */
+  }
+
+  .copy-btn {
+    border: 2px solid #dbdbdb; /* 初始黑色边框 */
+    background: none;
+    cursor: pointer;
+    padding: 5px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .copy-btn-success {
+      border-color: #4CAF50; /* 绿色边框 */
+      color: #4CAF50; /* 绿色图标 */
+  }
+
+
+</style>
+
 </head>
 <body>
 
@@ -171,9 +242,92 @@
         <h2 class="title is-3">How to Run</h2>
         <div class="content has-text-justified">
 
+          <h3>Environment</h3>
+          <p>You can set up the running environment by executing:</p>
+          <div class="git-command-container highlight">
+            <span class="git-command">conda install --yes --file requirements.txt</span>
+            <button class="copybtn" onclick="copyCommand(this)" aria-label="Copy command to clipboard">
+              <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-copy" width="24" height="24" viewBox="0 0 24 24" stroke-width="1.5" stroke="#000000" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                  <rect x="8" y="8" width="12" height="12" rx="2"></rect>
+                  <path d="M16 8v-2a2 2 0 0 0 -2 -2h-8a2 2 0 0 0 -2 2v8a2 2 0 0 0 2 2h2"></path>
+              </svg>
+            </button>
+          </div>
+
+
+          <h3>Data Preprocessingt</h3>
+          <p>You can set up the running environment by executing:</p>
+          <ol>
+            <li>First, download the zipped data from the link <a href="https://drive.google.com/file/d/1LsJPsfr5tB2zK8ELlATxomJn687ToohX/view">Dataset</a>.</li>
+            <li>Place the zip file in the <code style="color: inherit">./data/</code > folder and extract it.</li>
+            <li>Normally, you can run the experiments without modifying the dataset, but if you want to customize it, you can refer to <code  style="color: inherit">./data/README.md</code> for the collection and preprocessing of each MGB dataset.</li>
+          </ol>
+
+          <h3>Run by Examples</h3>
+          <p>You can easily run experiments using the following script:</p>
+          <div class="git-command-container highlight">
+            <span class="git-command">bash main.sh ${gpu} ${model_name} ${dataset_name}</span>
+            <button class="copybtn" onclick="copyCommand(this)" aria-label="Copy command to clipboard">
+              <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-copy" width="24" height="24" viewBox="0 0 24 24" stroke-width="1.5" stroke="#000000" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                  <rect x="8" y="8" width="12" height="12" rx="2"></rect>
+                  <path d="M16 8v-2a2 2 0 0 0 -2 -2h-8a2 2 0 0 0 -2 2v8a2 2 0 0 0 2 2h2"></path>
+              </svg>
+            </button>
+          </div>
+
+          <p>For example, to run HDMI on IMDB-MGB using GPU 0, simply run:</p>
+          <div class="git-command-container highlight">
+            <span class="git-command">bash main.sh 0 hdmi imdb-mgb</span>
+            <button class="copybtn" onclick="copyCommand(this)" aria-label="Copy command to clipboard">
+              <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-copy" width="24" height="24" viewBox="0 0 24 24" stroke-width="1.5" stroke="#000000" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                  <rect x="8" y="8" width="12" height="12" rx="2"></rect>
+                  <path d="M16 8v-2a2 2 0 0 0 -2 -2h-8a2 2 0 0 0 -2 2v8a2 2 0 0 0 2 2h2"></path>
+              </svg>
+            </button>
+          </div>
+
+
+          <p>Currently, we support the following datasets:</p>
+          <div class="git-command-container highlight">
+            <span class="git-command">acm, imdb, dblp, amazon, amazon_fraud, yelpchi_fraud, acm-mgb, imdb-mgb, dblp-mgb, amazon-mgb</span>
+            <button class="copybtn" onclick="copyCommand(this)" aria-label="Copy command to clipboard">
+              <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-copy" width="24" height="24" viewBox="0 0 24 24" stroke-width="1.5" stroke="#000000" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                  <rect x="8" y="8" width="12" height="12" rx="2"></rect>
+                  <path d="M16 8v-2a2 2 0 0 0 -2 -2h-8a2 2 0 0 0 -2 2v8a2 2 0 0 0 2 2h2"></path>
+              </svg>
+            </button>
+          </div>
+
+
+          <p>and the following methods:</p>
+          <div class="git-command-container highlight">
+            <span class="git-command">gcn, gat, mne, han, dmgi, hdmi, heco, ckd, mgdcr, dmg, mgtf</span>
+            <button class="copybtn" onclick="copyCommand(this)" aria-label="Copy command to clipboard">
+              <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-copy" width="24" height="24" viewBox="0 0 24 24" stroke-width="1.5" stroke="#000000" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                  <rect x="8" y="8" width="12" height="12" rx="2"></rect>
+                  <path d="M16 8v-2a2 2 0 0 0 -2 -2h-8a2 2 0 0 0 -2 2v8a2 2 0 0 0 2 2h2"></path>
+              </svg>
+            </button>
+          </div>
+
+
+          <h3>Pip Usage</h3>
+          <p>You can also download our code using the pip package by running:</p>
+          <div class="git-command-container highlight">
+            <span class="git-command">pip install multiplex-graph-benchmark</span>
+            <button class="copybtn" onclick="copyCommand(this)" aria-label="Copy command to clipboard">
+              <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-copy" width="24" height="24" viewBox="0 0 24 24" stroke-width="1.5" stroke="#000000" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                  <rect x="8" y="8" width="12" height="12" rx="2"></rect>
+                  <path d="M16 8v-2a2 2 0 0 0 -2 -2h-8a2 2 0 0 0 -2 2v8a2 2 0 0 0 2 2h2"></path>
+              </svg>
+            </button>
+          </div>
+          <p>You can also download our code using the pip package by running:</p>
+
+
+
+
         </div>
-
-
       </div>
     </div>
   </div>
@@ -327,10 +481,10 @@
   <div class="container">
     <div class="content has-text-centered">
       <a class="icon-link"
-         href="./static/videos/nerfies_paper.pdf">
+         href="">
         <i class="fas fa-file-pdf"></i>
       </a>
-      <a class="icon-link" href="https://github.com/keunhong" class="external-link" disabled>
+      <a class="icon-link" href="" class="external-link" disabled>
         <i class="fab fa-github"></i>
       </a>
     </div>
